@@ -1,6 +1,4 @@
-let display = document.getElementById("display");
-
-// Append value to the display
+const display = document.getElementById("display");
 function append(value) {
   if (display.value === "0" && value !== ".") {
     display.value = value;
@@ -8,13 +6,9 @@ function append(value) {
     display.value += value;
   }
 }
-
-// Clear display
 function clearDisplay() {
   display.value = "0";
 }
-
-// Delete last character
 function deleteLast() {
   if (display.value.length > 1) {
     display.value = display.value.slice(0, -1);
@@ -22,25 +16,24 @@ function deleteLast() {
     display.value = "0";
   }
 }
-
-// Calculate result
 function calculate() {
   try {
-    // Evaluate using Function constructor instead of eval (safer)
-    display.value = new Function("return " + display.value);
+    const result = eval(display.value);
+    if (isFinite(result)) {
+      display.value = result;
+    } else {
+      display.value = "Error";
+    }
   } catch (e) {
     display.value = "Error";
   }
 }
-
-// Keyboard support
-document.addEventListener("keydown", function (event) {
+document.addEventListener("keydown", (event) => {
   const key = event.key;
-
-  if (!isNaN(key) || "+-*/().".includes(key)) {
+  if (/[\d\+\-\*\/\.\(\)]/.test(key)) {
     append(key);
   } else if (key === "Enter") {
-    event.preventDefault();
+    event.preventDefault(); 
     calculate();
   } else if (key === "Backspace") {
     deleteLast();
