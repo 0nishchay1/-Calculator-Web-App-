@@ -1,6 +1,7 @@
-const display = document.getElementById("display");
+const display = document.querySelector("#display");
 function append(value) {
-  if (display.value === "0" && value !== ".") {
+  if (display.value === "0" && value !== "."
+) {
     display.value = value;
   } else {
     display.value += value;
@@ -35,7 +36,7 @@ document.addEventListener("keydown", (event) => {
   } else if (key === "Enter") {
     event.preventDefault(); 
     calculate();
-  } else if (key === "Backspace") {
+  } else if (key === "Backspace" || key === "Delete" ) {
     deleteLast();
   } else if (key === "Escape") {
     clearDisplay();
