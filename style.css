@@ -1,23 +1,26 @@
-body {
+body { 
     background-color: #0f111c;
     font-family: Arial, sans-serif;
     color: white;
-    margin: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    align-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 10px;
 }
 
 .calculator {
     background-color: #1e1e2f;
     border-radius: 15px;
     padding: 20px;
-    margin: 50px auto;
+    margin: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    max-width: 400px;
-    
+    width: 400px;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 #display {
@@ -47,12 +50,14 @@ button {
     background-color: #2C303D;
     border: none;
     color: white;
-    font-size: 1rem;
+    font-size: 1.1rem;
     padding: 14px 0;
     border-radius: 18px;
     cursor: pointer;
     transition: background-color 0.2s;
     text-align: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 button:hover {
@@ -68,6 +73,8 @@ button:hover {
     display: flex;
     align-items: center;
     gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .social-icons a {
@@ -79,3 +86,35 @@ button:hover {
     transform: scale(1.1);
 }
 
+/* Responsive adjustments */
+@media screen and (max-width: 500px) {
+    #display {
+        font-size: 1.5rem;
+        padding: 15px;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 12px 0;
+    }
+
+    .calculator {
+        padding: 15px;
+    }
+
+    .buttons {
+        gap: 8px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    #display {
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 10px 0;
+    }
+}
